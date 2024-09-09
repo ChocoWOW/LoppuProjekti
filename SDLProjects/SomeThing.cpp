@@ -5,6 +5,13 @@
 #include <algorithm>
 #include <SDL.h>
 
+/// <summary>
+/// Piirtaa nykyisen sort algoritmin tilanteen
+/// </summary>
+/// <param name="v">lista jarjesteltavista asioista</>
+/// <param name="renderer">renderoi mita tapahtuu</>
+/// <param name="red">i vari</>
+/// <param name="blue">j vari</>
 void draw_state(std::vector<int>& v,
 	SDL_Renderer* renderer,
 	unsigned int red, unsigned int blue) 
@@ -22,7 +29,12 @@ void draw_state(std::vector<int>& v,
 	}
 }
 
-
+/// <summary>
+/// SDL Ei toimi ilman naita
+/// </summary>
+/// <param name="argc"></param>
+/// <param name="argv"></param>
+/// <returns></returns>
 int main(int argc, char* argv[]) {
 
 	SDL_Renderer;
@@ -31,7 +43,7 @@ int main(int argc, char* argv[]) {
 	std::vector<int> v;
 	//v.reserve(100); doing this is slower LOL
 
-	// put stuff into vector
+	// laita kamaa vectoriin
 	for (int i = 0; i < 100; i++) {
 
 		v.push_back(d(rd));
@@ -53,15 +65,15 @@ int main(int argc, char* argv[]) {
 				std::swap(v[j], v[i]);
 			}
 
-			//clear out stuff
+			//tyhjennä ikkuna
 
 			SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 			SDL_RenderClear(renderer);
 
-			// draw the sorts state
+			// piirrä sortin tilanne
 			draw_state(v, renderer, i,j);
 
-			//show to window
+			//näytä ikkunalle
 			SDL_RenderPresent(renderer);
 			SDL_Delay(10);
 		}
